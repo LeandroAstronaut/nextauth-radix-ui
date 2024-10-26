@@ -114,7 +114,7 @@ function SignupForm() {
 
 
                 <Button type="submit" mt="4">
-                    Sign Un
+                    Sign Up
                 </Button>
             </Flex>
         </form>

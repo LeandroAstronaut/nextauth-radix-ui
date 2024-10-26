@@ -16,7 +16,7 @@ function RegisterPage() {
                   Already have an account?
                 </Text>
                 <Link asChild >
-                  <NavLink href="/auth/login">Sign Up</NavLink>
+                  <NavLink href="/auth/login">Sign In</NavLink>
                 </Link>
               </Flex>
             </Card>
