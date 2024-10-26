@@ -26,7 +26,8 @@ function SigninForm() {
         })
 
         if (!res?.ok){
-            console.log(res)
+            console.log(res);
+            return
         }
 
         router.push("/dashboard")
