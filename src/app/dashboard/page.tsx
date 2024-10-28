@@ -1,18 +1,38 @@
-"use client"
 import React from 'react'
-import { Button, Container, Heading } from '@radix-ui/themes'
-import { useRouter } from 'next/navigation'
+import { Container, Grid} from '@radix-ui/themes'
+import HeaderDashboard from '@/components/dashboard/HeaderDashboard';
+import prisma from '@/libs/prisma';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/route';
+import ProjectCard from '@/components/projects/ProjectCard';
 
-function DashboardPage() {
+async function loadProjects(userId:number) {
 
-  const router = useRouter();
+  return await prisma.project.findMany({
+    where: {
+      userId
+    }
+  });
+}
+
+async function DashboardPage() {
+
+
+  const session = await getServerSession(authOptions);
+
+  if (!session) throw Error ("Unauthorized")
+
+  const projects = await loadProjects(parseInt(session?.user.id as string));
 
   return (
     <Container className="mt-10">
-      <div className='flex justify-between'>
-        <Heading>Tasks</Heading>
-        <Button onClick={()=> router.push("/dashboard/tasks/new")}>Add Task</Button>
-      </div>
+      <HeaderDashboard />
+      <Grid columns="3" gap="4" className='py-4'>
+        {projects.map(project => (
+          <ProjectCard project={project} key={project.id} />
+        ))}
+
+      </Grid>
     </Container>
   )
 }
