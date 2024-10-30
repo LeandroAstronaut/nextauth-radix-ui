@@ -7,12 +7,14 @@ import { useSession, signOut } from 'next-auth/react'
 
 function Navbar() {
 
-    const { data: session} = useSession();
+    const { data: session, status} = useSession();
     console.log(session);
 
+    if (status === "loading") return null;
+
     return (
-        <nav className="bg-zinc-700 py-4">
-            <Container>
+        <nav className="bg-zinc-700 py-4 px-5 md:px-0">
+            <Container >
                 <Flex justify="between" align="center">
                     <NextLink href="/" passHref>
                         <Link asChild>

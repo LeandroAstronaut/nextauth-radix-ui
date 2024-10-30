@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 import { SessionProvider } from 'next-auth/react';
+import { Toaster } from 'sonner';
 
 interface Props {
     children: React.ReactNode;
@@ -9,7 +10,8 @@ interface Props {
 function GlobalContext({children}: Props) {
   return (
     <SessionProvider>
-        {children}
+      {children}
+      <Toaster />
     </SessionProvider>
   )
 }

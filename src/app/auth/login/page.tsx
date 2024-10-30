@@ -7,7 +7,7 @@ function LoginPage() {
   return (
     <>
         <Container size="1" height="100%" className="p-3 md:pd-0">
-          <Flex className="h-screen items-center">
+          <Flex className="h-[calc(100vh-10rem)] items-center">
             <Card className="w-full">
               <Heading>Sign In</Heading>
               <SigninForm />
