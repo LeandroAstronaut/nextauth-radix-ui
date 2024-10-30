@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
-import ContextProvider from "@/context/globalcontext";
+import ContextProvider from "../context/GlobalContext";
 
 
 const geistSans = localFont({
